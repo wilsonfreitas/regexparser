@@ -25,7 +25,9 @@ class PortugueseRulesParser(TextParser):
         r'^-?\s*\d+,\d+?$'
         text = text.replace(',', '.')
         return eval(text)
+
 parser = PortugueseRulesParser()
+
 assert parser.parse('1,1') == 1.1
 assert parser.parse('-1,1') == -1.1
 assert parser.parse('- 1,1') == -1.1
