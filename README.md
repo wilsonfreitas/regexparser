@@ -13,11 +13,12 @@ The `TextParser` class to isolates the parsing task, instead of getting the pars
 
 ### Using
 
-Create a class inheriting `TextParser` and write methods with names starting with `parse`.
-These methods must accept 2 more arguments after `self` and those arguments are the `text` that will be parsed and the `MatchObject` that is returned by applying the regular expression to the `text`.
-The `parse*` methods are called only if its regular expression is matched and their regular expressions are set in the methods' doc string.
+Create a class that inherits `regexparser.TextParser` and write methods with names starting with `parse`.
+These methods must accept 2 arguments after `self`.
+These arguments are the `text` that will be parsed and the `re.Match` that is returned by applying the regular expression to the `text`.
+The `parse*` methods are called only if its regular expression matches the given text and their regular expressions are set in the methods' doc string.
 
-`textparser` provides a compact way of applying transformation rules and that rules don't have to be spread out along the code.
+`regexparser` provides a compact way of applying transformation rules and that rules don't have to be spread out along the code.
 
 The following code shows how to create text parsing rules for a tew text chunks in portuguese.
 
