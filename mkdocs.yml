@@ -9,3 +9,10 @@ theme:
 nav:
   - regexparser Documentation: index.md
   - reference.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences

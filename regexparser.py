@@ -6,8 +6,6 @@ from typing import List, Any, Callable
 
 class TextParser:
     """
-    TextParser class
-
     Builds parsers based on regular expressions.
     The regular expression, used to match the text pattern, is specified in the
     method's `__doc__` attribute.
@@ -72,8 +70,6 @@ class TextParser:
 
 class BooleanParser(TextParser):
     """
-    BooleanParser class
-
     Convert "TRUE" or "FALSE" (with any case combination) to boolean objects.
 
     Examples
@@ -92,8 +88,6 @@ class BooleanParser(TextParser):
 
 class NumberParser(TextParser):
     """
-    NumberParser class
-
     Convert text with numbers to int and float objects.
 
     Examples
@@ -123,8 +117,6 @@ class NumberParser(TextParser):
 
 class PortugueseRulesParser(TextParser):
     """
-    PortugueseRulesParser class
-
     Convert text to float and boolean according to Brazilian Portuguese conventions.
 
     Examples
