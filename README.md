@@ -1,13 +1,15 @@
-## textparser
+## regexparser
 
 Frequently I have to parse text into `float`, `int` and `date`, for a few examples.
 The `TextParser` class to isolates the parsing task, instead of getting the parsing rules (or functions) spread all over the code.
 
 ### Install
 
+    pip install regexparser
+
 `pip` install from github:
 
-	pip install git+https://github.com/wilsonfreitas/textparser.git
+	pip install git+https://github.com/wilsonfreitas/regexparser.git
 
 ### Using
 

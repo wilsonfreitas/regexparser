@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "regexparser"
+version = "0.1.0"
+description = "Simple parser for small text chunks"
+authors = ["wilsonfreitas <wilson.freitas@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "regexparser.py"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
