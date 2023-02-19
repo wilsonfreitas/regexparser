@@ -1,0 +1,11 @@
+site_name: regexparser Docs
+
+plugins:
+  - mkdocstrings
+
+theme:
+  name: "material"
+
+nav:
+  - regexparser Documentation: index.md
+  - reference.md
