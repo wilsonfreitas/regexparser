@@ -1,7 +1,10 @@
 ## regexparser
 
-Frequently I have to parse text into `float`, `int` and `date`, for a few examples.
-The `TextParser` class to isolates the parsing task, instead of getting the parsing rules (or functions) spread all over the code.
+Frequently I have to parse text into `float`, `int` and `date` objects.
+It is a pain to have small parsing functions spread all over the code.
+The `regexparser.TextParser` class to isolates the parsing task,
+it groups the parsing rules in a hierachy of classes that can be easily reused
+in different projects.
 
 ### Install
 

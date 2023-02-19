@@ -10,11 +10,11 @@ class TextParser:
 
     Builds parsers based on regular expressions.
     The regular expression, used to match the text pattern, is specified in the
-    method's __doc__ attribute.
+    method's `__doc__` attribute.
     The name of these *parser methods* must start with `parser`.
 
     The parser class inherits TextParser and implements the parser methods
-    defining the regular expression in the method's __doc__.
+    defining the regular expression in the method's `__doc__`.
 
     The parser method has two arguments, the first is the given text that is
     parsed and the second is one instance of the re.Match class.
@@ -31,18 +31,22 @@ class TextParser:
     --------
     Creat a class to parse integers.
 
+    ```python
     >>> class IntParser(TextParser):
     >>>     def parseInteger(self, text, match):
     >>>         r'^-?\\s*\\d+$'
     >>>         return eval(text)
+    ```
 
     Instanciate and call the parse method to convert the given text.
 
+    ```python
     >>> parser = IntParser()
     >>> parser.parse('1')
     1
     >>> parser.parse('a')
     'a'
+    ```
     """
     def __init__(self):
         self.parsers = self.__createMethodAnalyzers()
@@ -74,10 +78,12 @@ class BooleanParser(TextParser):
 
     Examples
     --------
+    ```python
     >>> parser.parse('True')
     True
     >>> parser.parse('FALSE')
     False
+    ```
     """
     def parseBoolean(self, text: str, match: re.Match) -> bool:
         r'^[Tt][Rr][Uu][eE]|[Ff][Aa][Ll][Ss][Ee]$'
@@ -92,12 +98,14 @@ class NumberParser(TextParser):
 
     Examples
     --------
+    ```python
     >>> parser.parse('1')
     1
     >>> parser.parse('- 1.1')
     -1.1
     >>> parser.parse('1,000.1')
     1000.1
+    ```
     """
     def parseInteger(self, text: str, match: re.Match) -> int:
         r'^-?\s*\d+$'
@@ -121,6 +129,7 @@ class PortugueseRulesParser(TextParser):
 
     Examples
     --------
+    ```python
     >>> parser.parse('1,1')
     1,1
     >>> parser.parse('- 1.000,1')
@@ -129,6 +138,7 @@ class PortugueseRulesParser(TextParser):
     True
     >>> parser.parse('Não')
     False
+    ```
     """
     def parseBoolean_ptBR(self, text: str, match: re.Match) -> bool:
         r'^(sim|Sim|SIM|n.o|N.o|N.O)$'
@@ -161,7 +171,7 @@ def textparse(text: str, regex: str, func: Callable[[str, re.Match], Any]) -> An
         Given text to be parsed.
     regex: str
         Regular expression to match the desired pattern.
-    func: function
+    func: Callable[[str, re.Match], Any]
         Function that parses the given text once it matches the regular expression.
 
     Returns
@@ -171,10 +181,12 @@ def textparse(text: str, regex: str, func: Callable[[str, re.Match], Any]) -> An
 
     Examples
     --------
+    ```python
     >>> textparser.textparse('TRUe', r'^[Tt][Rr][Uu][eE]|[Ff][Aa][Ll][Ss][Ee]$', lambda t, m: eval(t.lower().capitalize()))
     True
     >>> textparser.textparse('1,1', r'^-?\\s*\\d+[\\.,]\\d+?$', lambda t, m: eval(t.replace(',', '.')))
     1.1
+    ```
     """
     parser = buildparser(regex, func)
     return parser(text)
@@ -188,20 +200,22 @@ def buildparser(regex: str, func: Callable[[str, re.Match], Any]) -> Callable[[s
     ----------
     regex: str
         Regular expression to match the desired pattern.
-    func: function
+    func: Callable[[str, re.Match], Any]
         Function that parses the given text once it matches the regular expression.
 
     Returns
     -------
-    Callable[[str]]
+    Callable[[str], Any]
         Returns a callable object that receives the text to be parsed and returns
         the result of the parsing.
 
     Examples
     --------
+    ```python
     >>> num_parser = textparser.buildparser(r'^-?\\s*\\d+[\\.,]\\d+?$', lambda t, m: eval(t.replace(',', '.')))
     >>> num_parser('1.1')
     1.1
+    ```
     """
     _regex = re.compile(regex)
     def _func(text):
